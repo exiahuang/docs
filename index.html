@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exia's Docs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            padding: 8px;
+            width: 300px;
+            font-size: 16px;
+        }
+        .bookmark-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .bookmark-list li {
+            background-color: #fff;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .bookmark-list a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .bookmark-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exia's Document</h1>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchBookmarks()">
+    </div>
+
+    <ul class="bookmark-list" id="bookmarkList">
+    </ul>
+
+    <script>
+        const bookmarks = [
+            { name: "GitHub", url: "https://github.com/exiahuang" },
+            { name: "exiahuang.github.io", url: "https://exiahuang.github.io/" },
+            { name: "Blog", url: "https://exiahuang.github.io/blog/" },
+            { name: "java", url: "https://exiahuang.github.io/docs/java" },
+            { name: "frappe", url: "https://exiahuang.github.io/docs/frappe" },
+            { name: "linux", url: "https://exiahuang.github.io/docs/linux" },
+            { name: "maths", url: "https://exiahuang.github.io/docs/maths" },
+            { name: "oss", url: "https://exiahuang.github.io/docs/oss" },
+            { name: "salesforce", url: "https://exiahuang.github.io/docs/salesforce" },
+            { name: "sfdx-xy-plugin", url: "https://github.com/exiahuang/sfdx-xy-plugin" },
+            { name: "sfdx-password-login", url: "https://github.com/exiahuang/sfdx-password-login" },
+            { name: "xycode", url: "https://exiahuang.github.io/xycode-doc" },
+            { name: "Vscode Market: xycode", url: "https://marketplace.visualstudio.com/items?itemName=ExiaHuang.xycode" },
+            { name: "xysfdx", url: "https://exiahuang.github.io/xysfdx-doc" },
+            { name: "Vscode Market: xysfdx", url: "https://marketplace.visualstudio.com/items?itemName=ExiaHuang.xysfdx" },
+            { name: "Vscode Market: dictionary", url: "https://marketplace.visualstudio.com/items?itemName=ExiaHuang.dictionary" },
+            { name: "Vscode Market: dictionary hujiang", url: "https://marketplace.visualstudio.com/items?itemName=ExiaHuang.hujiang" },
+            { name: "Vscode Market: xymath", url: "https://marketplace.visualstudio.com/items?itemName=ExiaHuang.xymath" },
+            { name: "lightning-ui", url: "https://github.com/exiahuang/lightning-ui" },
+            { name: "SalesforceXytoolsForSublime Document", url: "http://exiahuang.github.io/SalesforceXyTools/" },
+            { name: "Sublime Plugin: SalesforceXytools Install", url: "https://packagecontrol.io/packages/SalesforceXyTools/" },
+            { name: "Sublime Plugin: Cmder Install", url: "https://packagecontrol.io/packages/Cmder/" },
+            { name: "SalesforceXyTools-For-Chrome Document", url: "http://salesforcexytools.com/SalesforceXyTools/SalesforceXyTools-For-Chrome/" },
+            { name: "SalesforceXyTools-For-Chrome Download", url: "https://chromewebstore.google.com/detail/salesforce-xytools/ehklfkbacogbanjgekccnbfdgjechlmf?hl=ja" },
+            { name: "Salesforce Record Viewer(Chrome)", url: "https://chromewebstore.google.com/detail/salesforce-record-viewer/gjejhbigiagkigpamkgppnincbebmgcm?hl=ja" },
+        ];
+
+        const bookmarkList = document.getElementById("bookmarkList");
+        bookmarks.forEach(bookmark => {
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="${bookmark.url}" target="_blank">${bookmark.name}</a>`;
+            bookmarkList.appendChild(li);
+        });
+
+        function searchBookmarks() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const filteredBookmarks = bookmarks.filter(bookmark => bookmark.name.toLowerCase().includes(query));
+            bookmarkList.innerHTML = "";
+            filteredBookmarks.forEach(bookmark => {
+                const li = document.createElement("li");
+                li.innerHTML = `<a href="${bookmark.url}" target="_blank">${bookmark.name}</a>`;
+                bookmarkList.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>
