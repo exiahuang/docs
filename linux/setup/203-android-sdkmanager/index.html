@@ -1,0 +1,1435 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ubuntu setup">
+      
+      
+        <meta name="author" content="Exia.Huang">
+      
+      
+      
+        <link rel="prev" href="../202-android-scrcpy/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>203-android-sdkmanager - ubuntu setup</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-02B7V57RLL"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-02B7V57RLL",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-02B7V57RLL",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-android-command-line-tools" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ubuntu setup" class="md-header__button md-logo" aria-label="ubuntu setup" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ubuntu setup
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              203-android-sdkmanager
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://exiahuang.github.io/docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    exiahuang/docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ubuntu setup" class="md-nav__button md-logo" aria-label="ubuntu setup" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ubuntu setup
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://exiahuang.github.io/docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    exiahuang/docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Bash
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Bash
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/001-bash-for-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    001-bash-loop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bash/002-bash-while-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    002-bash-while-loop
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../001-network-config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    001-network-config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../002-fstab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    002-fstab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../003-ufw-firewall/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    003-ufw-firewall
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../004-setup-opt0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    004-setup-opt0
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../005-ssh-login/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    005-ssh-login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../006-font/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    006-font
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../007-python-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    007-python-setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../008-nginx-basic-password/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    008-nginx-basic-password
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../010-sudo-nopassword/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    010-sudo-nopassword
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../011-statup-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    011-statup-service
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../012-postgres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    012-postgres
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../013-grub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    013-grub
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../014-fdisk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    014-fdisk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../015-node-nvm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    015-node-nvm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../016-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    016-java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../101-docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    101-docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../102-docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    102-docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../104-docker-compose/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    104-docker-compose
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../201-android-platform-tools-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    201-android-platform-tools-setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../202-android-scrcpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    202-android-scrcpy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    203-android-sdkmanager
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    203-android-sdkmanager
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-android-command-line-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 安装 Android Command Line Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 设置环境变量
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 设置环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows 设置：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macoslinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS/Linux 设置：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sdkmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 使用 sdkmanager 安装组件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 使用 sdkmanager 安装组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sdk-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      更新 SDK Manager：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      列出可用组件：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装平台工具：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装构建工具：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装特定版本的 Android 平台：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装系统映像（用于模拟器）：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装 Android 模拟器：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装 Android API 级别：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装所有更新：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 验证安装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 安装其他组件（可选）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-android-command-line-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 安装 Android Command Line Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 设置环境变量
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 设置环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows 设置：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macoslinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS/Linux 设置：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sdkmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 使用 sdkmanager 安装组件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 使用 sdkmanager 安装组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sdk-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      更新 SDK Manager：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      列出可用组件：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装平台工具：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装构建工具：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装特定版本的 Android 平台：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装系统映像（用于模拟器）：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装 Android 模拟器：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#android-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装 Android API 级别：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      安装所有更新：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 验证安装
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 安装其他组件（可选）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>203-android-sdkmanager</h1>
+
+<p>要通过命令行使用 <code>sdkmanager</code> 安装 Android SDK 组件（如平台、构建工具和系统镜像），你需要先安装 <strong>Android Command Line Tools</strong> 并正确设置环境变量。下面是详细的步骤：</p>
+<h3 id="1-android-command-line-tools">1. <strong>安装 Android Command Line Tools</strong><a class="headerlink" href="#1-android-command-line-tools" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>下载 Android Command Line Tools</strong>：</li>
+<li>访问 <a href="https://developer.android.com/studio#downloads">Android Studio 下载页面</a>。</li>
+<li>
+<p>在页面中找到 <strong>Command Line Tools</strong>，根据你的操作系统选择下载：</p>
+<ul>
+<li><strong>Windows</strong>: 下载 <code>commandlinetools-win-xxxx.zip</code></li>
+<li><strong>macOS</strong>: 下载 <code>commandlinetools-mac-xxxx.zip</code></li>
+<li><strong>Linux</strong>: 下载 <code>commandlinetools-linux-xxxx.zip</code></li>
+</ul>
+</li>
+<li>
+<p><strong>解压缩并安装</strong>：
+   将下载的压缩文件解压到你希望安装 Android SDK 的目录中。
+   例如，在 Windows 上，解压到 <code>C:\android-sdk</code>，在 macOS/Linux 上，可以解压到 <code>~/android-sdk</code>。</p>
+</li>
+</ol>
+<p>解压后，应该会有一个 <code>cmdline-tools</code> 目录，里面包含了 <code>sdkmanager</code> 和其他工具。</p>
+<h3 id="2">2. <strong>设置环境变量</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>确保 <code>ANDROID_HOME</code> 和 <code>PATH</code> 环境变量已正确设置，以便你可以从命令行访问 Android SDK 工具。</p>
+<h4 id="windows"><strong>Windows</strong> 设置：<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h4>
+<ol>
+<li>打开“系统属性”并选择“环境变量”。</li>
+<li>在“系统变量”部分，点击“新建”来设置 <code>ANDROID_HOME</code>，并将它指向你解压的 SDK 目录。例如：
+   <div class="highlight"><pre><span></span><code>ANDROID_HOME = C:\android-sdk
+</code></pre></div></li>
+<li>编辑 <code>Path</code> 环境变量，添加以下内容：
+   <div class="highlight"><pre><span></span><code>C:\android-sdk\cmdline-tools\latest\bin
+C:\android-sdk\platform-tools
+</code></pre></div></li>
+</ol>
+<h4 id="macoslinux"><strong>macOS/Linux</strong> 设置：<a class="headerlink" href="#macoslinux" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>打开终端并编辑你的 shell 配置文件：
+   <div class="highlight"><pre><span></span><code>nano<span class="w"> </span>~/.bash_profile<span class="w">   </span><span class="c1"># 对于 bash</span>
+</code></pre></div>
+   或者：
+   <div class="highlight"><pre><span></span><code>nano<span class="w"> </span>~/.zshrc<span class="w">           </span><span class="c1"># 对于 zsh</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>在文件中添加以下内容：
+   <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ANDROID_HOME</span><span class="o">=</span>~/android-sdk
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$ANDROID_HOME</span>/cmdline-tools/latest/bin:<span class="nv">$ANDROID_HOME</span>/platform-tools
+</code></pre></div></p>
+</li>
+<li>
+<p>保存文件并运行：
+   <div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>~/.bash_profile<span class="w">   </span><span class="c1"># 对于 bash</span>
+</code></pre></div>
+   或：
+   <div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>~/.zshrc<span class="w">          </span><span class="c1"># 对于 zsh</span>
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="3-sdkmanager">3. <strong>使用 sdkmanager 安装组件</strong><a class="headerlink" href="#3-sdkmanager" title="Permanent link">&para;</a></h3>
+<p>在设置好环境变量后，打开终端（或命令提示符），并使用 <code>sdkmanager</code> 命令来安装 Android SDK 组件。</p>
+<h4 id="sdk-manager"><strong>更新 SDK Manager</strong>：<a class="headerlink" href="#sdk-manager" title="Permanent link">&para;</a></h4>
+<p>首先，确保 <code>sdkmanager</code> 是最新版本，运行：
+<div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span>--update
+</code></pre></div></p>
+<h4 id="_1"><strong>列出可用组件</strong>：<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p>你可以查看所有可用的组件，包括平台、工具和系统映像，使用：
+<div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span>--list
+</code></pre></div></p>
+<h4 id="_2"><strong>安装平台工具</strong>：<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>例如，安装最新的 Android 平台工具：
+<div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span><span class="s2">&quot;platform-tools&quot;</span>
+</code></pre></div></p>
+<h4 id="_3"><strong>安装构建工具</strong>：<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>例如，安装 Android 构建工具版本 30.0.3：
+<div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span><span class="s2">&quot;build-tools;30.0.3&quot;</span>
+</code></pre></div></p>
+<h4 id="android"><strong>安装特定版本的 Android 平台</strong>：<a class="headerlink" href="#android" title="Permanent link">&para;</a></h4>
+<p>安装特定版本的 Android 平台（如 Android 11）：
+<div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span><span class="s2">&quot;platforms;android-30&quot;</span>
+</code></pre></div></p>
+<h4 id="_4"><strong>安装系统映像（用于模拟器）</strong>：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>安装系统映像（例如，Android 30 的 x86_64 架构）：
+<div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span><span class="s2">&quot;system-images;android-30;google_apis;x86_64&quot;</span>
+</code></pre></div></p>
+<h4 id="android_1"><strong>安装 Android 模拟器</strong>：<a class="headerlink" href="#android_1" title="Permanent link">&para;</a></h4>
+<p>如果你需要安装 Android 模拟器，可以运行：
+<div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span><span class="s2">&quot;emulator&quot;</span>
+</code></pre></div></p>
+<h4 id="android-api"><strong>安装 Android API 级别</strong>：<a class="headerlink" href="#android-api" title="Permanent link">&para;</a></h4>
+<p>如果你想安装 Android 29（API 29）及其构建工具，可以执行：
+<div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span><span class="s2">&quot;platforms;android-29&quot;</span>
+</code></pre></div></p>
+<h4 id="_5"><strong>安装所有更新</strong>：<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>如果你想要安装所有更新的 SDK 组件，运行：
+<div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span>--licenses<span class="w">  </span><span class="c1"># 同意许可证</span>
+sdkmanager<span class="w"> </span>--update<span class="w">    </span><span class="c1"># 更新所有可用组件</span>
+</code></pre></div></p>
+<h3 id="4">4. <strong>验证安装</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>安装完成后，你可以使用以下命令检查 Android SDK 是否正确安装和配置：</p>
+<ul>
+<li>
+<p>查看设备是否连接：
+  <div class="highlight"><pre><span></span><code>adb<span class="w"> </span>devices
+</code></pre></div></p>
+</li>
+<li>
+<p>查看已安装的模拟器：
+  <div class="highlight"><pre><span></span><code>emulator<span class="w"> </span>-list-avds
+</code></pre></div></p>
+</li>
+</ul>
+<h3 id="5">5. <strong>安装其他组件（可选）</strong><a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>你可以通过 <code>sdkmanager</code> 安装更多 Android 工具和库，以下是一些常用的命令：</p>
+<ul>
+<li>
+<p>安装 Google Play 服务：
+  <div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span><span class="s2">&quot;extras;google;google_play_services&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>安装支持的 Android 版本：
+  <div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span><span class="s2">&quot;platforms;android-28&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>安装 Java 仓库：
+  <div class="highlight"><pre><span></span><code>sdkmanager<span class="w"> </span><span class="s2">&quot;extras;android;m2repository&quot;</span>
+</code></pre></div></p>
+</li>
+</ul>
+<h3 id="_6">总结<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>通过 <code>sdkmanager</code> 命令，你可以方便地安装和管理 Android SDK 组件。记得在安装之前设置好 Android SDK 的环境变量，并确保使用最新的命令行工具。通过这些工具，你可以轻松管理 Android 平台、构建工具、模拟器和其他必需的组件。如果你在执行命令时遇到问题，随时告诉我，我会帮你进一步排查。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Exia Huang
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

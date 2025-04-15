@@ -1,0 +1,861 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learn Java">
+      
+      
+        <meta name="author" content="Exia.Huang">
+      
+      
+      
+        <link rel="prev" href="../../security/">
+      
+      
+        <link rel="next" href="../1-2-package/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>1-1-reference - Exia's Java</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-02B7V57RLL"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-02B7V57RLL",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-02B7V57RLL",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#java-basic" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Exia&#39;s Java" class="md-header__button md-logo" aria-label="Exia's Java" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Exia's Java
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1-1-reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://exiahuang.github.io/docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    exiahuang/docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Exia&#39;s Java" class="md-nav__button md-logo" aria-label="Exia's Java" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Exia's Java
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://exiahuang.github.io/docs/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    exiahuang/docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contribute
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contribute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    index
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Springboot
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Springboot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    1-1-reference
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    1-1-reference
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#java-basic" class="md-nav__link">
+    <span class="md-ellipsis">
+      java basic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#springboot3-rest-api-arch" class="md-nav__link">
+    <span class="md-ellipsis">
+      springboot3-rest-api-arch
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-2-package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1-2-package
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-3-newrelic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1-3-newrelic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-1-command/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9-1-command
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../init-springboot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    init-springboot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#java-basic" class="md-nav__link">
+    <span class="md-ellipsis">
+      java basic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#springboot3-rest-api-arch" class="md-nav__link">
+    <span class="md-ellipsis">
+      springboot3-rest-api-arch
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>1-1-reference</h1>
+
+<h2 id="java-basic">java basic<a class="headerlink" href="#java-basic" title="Permanent link">&para;</a></h2>
+<ul>
+<li>java<ul>
+<li><a href="https://qiita.com/shinyay/items/7ecf511b1a7825e979ad">Maven を動かすDocker コンテナを作ってみた</a></li>
+<li><a href="https://kamichidu.hatenablog.com/entry/2019/10/03/103702">開発時にdockerを使ってmavenをいい感じに動かす</a></li>
+<li><a href="https://qiita.com/KevinFQ/items/e8363ad6123713815e68">よく使うMavenコマンド集</a></li>
+</ul>
+</li>
+<li>Vscode<ul>
+<li><a href="https://qiita.com/smats-rd/items/ec2dc566bfb4b92f04d5">Visual Studio Code でSpring Bootに入門する</a></li>
+<li><a href="https://stackoverflow.com/questions/58857785/vscode-how-do-i-turn-off-java-completely">VSCode how do I turn off java completely?</a> </li>
+<li><a href="https://github.com/redhat-developer/vscode-java/issues/406">java.autobuild.enabled</a></li>
+</ul>
+</li>
+<li>Books<ul>
+<li><a href="https://www.bookstack.cn/read/SpringBoot-Course/README.md">SpringBoot实战系列</a></li>
+<li><a href="https://github.com/qufei1993/SpringBoot-Course">SpringBoot实战系列 github</a></li>
+</ul>
+</li>
+<li>java package<ul>
+<li><a href="https://qiita.com/haruto167/items/162551100449ea5c7e6d">これは便利！人気のJavaライブラリ+αのまとめ</a></li>
+</ul>
+</li>
+<li>SprintBoot Hello world<ul>
+<li><a href="https://qiita.com/Masahiro_Uemura1234/items/3405fae55cfedcc8cd4b">SpringBootでHello World プロジェクト作成～実行</a></li>
+<li><a href="https://qiita.com/t-yama-3/items/969825d5c1bc4a16866d">【初心者】Spring Boot で新規プロジェクトを作成する基本手順（MySQL / JDBC）</a></li>
+<li><a href="https://zenn.dev/nishiharu/articles/7f27b8c580f896">Spring BootプロジェクトをDocker上で動かす</a></li>
+<li><a href="https://start.spring.io/">Spring Initializr</a></li>
+</ul>
+</li>
+<li>Spring-devtools<ul>
+<li><a href="https://developer.aliyun.com/article/1310282">Spring Boot之Spring-devtools热部署：实现快速开发与调试</a></li>
+<li><a href="https://qiita.com/rubytomato@github/items/6f5dc142f32d9e9c1e2a">Spring Boot devtoolsのAutomatic restartについて</a></li>
+<li><a href="https://qiita.com/kohei_sasaki/items/93b32177df46b4c450f3">SpringBootでホットデプロイを行う2つの方法</a></li>
+<li><a href="https://medium.com/@kishieel/dockerize-your-spring-boot-application-with-hot-reloading-44ada09adf20">Dockerize Your Spring Boot Application With Hot-Reloading</a></li>
+</ul>
+</li>
+<li>Swagger For SpringBoot 3<ul>
+<li><a href="https://qiita.com/m_masashi/items/61700164e8aaa35481b3">SpringbootでAPIを作成し仕様書をswaggerで自動作成する</a></li>
+<li><a href="https://qiita.com/thashi/items/72a2bb20e202ae293abe">springdoc-openapiを利用したAPIドキュメント自動生成</a></li>
+</ul>
+</li>
+<li>BASIC 認証<ul>
+<li><a href="https://qiita.com/niwasawa/items/fc0f23e97f7fb2a8d3be">Spring Boot + Spring Security で BASIC 認証を実現する</a></li>
+</ul>
+</li>
+<li>Spring Security Config<ul>
+<li>WebSecurityConfigurerAdapter</li>
+<li><a href="https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/basic.html">BasicAuthenticationConvert</a></li>
+</ul>
+</li>
+<li>Sample Project<ul>
+<li><a href="https://github.com/acoronadoc/java-springboot-hexagonal-architecture-sample">java-springboot-hexagonal-architecture-sample</a></li>
+<li><a href="https://github.com/ityouknow/awesome-spring-boot">springboot awesome</a></li>
+</ul>
+</li>
+<li>mybatis<ul>
+<li><a href="https://www.bookstack.cn/read/mybatis-3.5.7-zh/">MyBatis 3.5.7 参考文档</a></li>
+<li><a href="https://mybatis.org/generator/running/runningWithMaven.html">MyBatis Generator</a></li>
+<li><a href="https://qiita.com/charon/items/9946aababa76d586fe6c">MyBatis Generatorを、Spring Bootアプリケーションと組み合わせて使うように構成してみる</a></li>
+<li><a href="https://qiita.com/ketman55/items/abcc1e23dcac0cc268b5">MyBatis GeneratorでMapper&amp;Entityを自動生成しよう！</a></li>
+<li><a href="https://zenn.dev/peishim/articles/07178eadbcebb6">MyBatis Generatorの導入方法</a></li>
+<li><a href="https://zenn.dev/re24_1986/articles/5bf56ef844f6c3">【MyBatis】spring bootでDB操作をできるだけ速く簡単に作成する【自動生成】</a></li>
+</ul>
+</li>
+<li>mybatis-spring-boot-starter<ul>
+<li><a href="https://qiita.com/kazuki43zoo/items/ea79e206d7c2e990e478">mybatis-spring-boot-starterの使い方</a></li>
+</ul>
+</li>
+<li>Spring Boot Hikari<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/392484378">终于理解Spring Boot 为什么青睐HikariCP了，图解的太透彻了！</a></li>
+</ul>
+</li>
+<li>Gen<ul>
+<li><a href="https://auth0.com/blog/jp-automatically-mapping-dto-to-entity-on-spring-boot-apis/">Spring Boot API で DTO をエンティティへ自動的にマッピングする</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="springboot3-rest-api-arch">springboot3-rest-api-arch<a class="headerlink" href="#springboot3-rest-api-arch" title="Permanent link">&para;</a></h2>
+<ul>
+<li>springboot core<ul>
+<li>adapter<ul>
+<li><a href="https://qiita.com/fastso/items/9a4e1f7b57be1024d25e">GSONでLocalDateTime型をserialize,deserializeする方法</a></li>
+<li><a href="https://stackoverflow.com/questions/39192945/serialize-java-8-localdate-as-yyyy-mm-dd-with-gson">Serialize Java 8 LocalDate as yyyy-mm-dd with Gson</a></li>
+</ul>
+</li>
+<li>annotation<ul>
+<li><a href="https://qiita.com/b1ueskydragon/items/07ac1f9bc8c55dffc541">Spring カスタムアノテーションに出会った話</a></li>
+</ul>
+</li>
+<li>auth<ul>
+<li><a href="https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/basic.html">BasicAuthenticationConvert</a></li>
+<li><a href="https://qiita.com/niwasawa/items/fc0f23e97f7fb2a8d3be">Spring Boot + Spring Security で BASIC 認証を実現する</a></li>
+</ul>
+</li>
+<li>config<ul>
+<li>DataSource</li>
+<li><a href="https://qiita.com/TEBASAKI/items/8925aa675f5e15b41967">Spring Boot解説第12回(開発環境編：DB接続とMybatis)</a></li>
+<li><a href="https://qiita.com/KevinFQ/items/a8de808e7719315c376c">Spring bootでマルチデータソース対応の実装方法（MybatisとSpring Data JPA ）</a></li>
+<li><a href="https://qiita.com/kenny_J_7/items/79a36d14dd6c892ae430">よく使うSpring Boot の アノテーションまとめ</a></li>
+<li>ValidationMessageSource</li>
+<li><a href="https://qiita.com/kawasukeeee/items/8fcd9d619272354e9df7">Spring メッセージ管理（MessageSource）</a></li>
+<li><a href="https://qiita.com/around7days/items/9fd5d224688a75f03014">SpringBoot MessageSourceの拡張</a></li>
+<li><a href="https://qiita.com/NagaokaKenichi/items/65d0e07151292968d67f">localValidatorFactoryBean.setValidationMessageSource</a></li>
+<li><a href="https://kazuhira-r.hatenablog.com/entry/2021/05/16/202818">localValidatorFactoryBean.setValidationMessageSource</a></li>
+<li>Jackson2ObjectMapperBuilder</li>
+<li><a href="https://www.baeldung.com/spring-boot-customize-jackson-objectmapper">Jackson2ObjectMapperBuilder: Customize the Jackson ObjectMapper</a></li>
+<li>BaseTypeHandler</li>
+<li><a href="https://qiita.com/morimorim/items/1d96cc3b76f0e13d122d">TypeHandlerでValueObjectへ値をマッピングできるようにしてみる</a></li>
+</ul>
+</li>
+<li>constant<ul>
+<li><a href="https://qiita.com/igm50/items/8c9788d4ba5868642c69">列挙型（enum）の基本的な使い方とコード例</a></li>
+</ul>
+</li>
+<li>dto<ul>
+<li>ApiRes</li>
+</ul>
+</li>
+<li>exception<ul>
+<li><a href="https://qiita.com/shohe05/items/f3627e45feb912946c7c">RuntimeException: SpringBootの@RestControllerで例外処理をする</a></li>
+<li>ValidationException,DMLException</li>
+</ul>
+</li>
+<li>handler<ul>
+<li><a href="https://qiita.com/ke_suke0215/items/2f152cf859990e39923c">ResponseEntityExceptionHandler: 発生した例外ごとのハンドリングを定義する</a></li>
+<li><a href="https://qiita.com/Keisuke1119/items/d13302582fbf933b5fa4">Spring Boot で REST API のエラー時のレスポンスをカスタマイズする</a></li>
+</ul>
+</li>
+<li>helper</li>
+<li>interceptor<ul>
+<li><a href="https://qiita.com/kyabetsuda/items/78a61bfff859fbc9c63f">SpringでInterceptorを使う</a></li>
+<li><a href="https://qiita.com/rubytomato@github/items/de1019aeaaab51c8784d">Spring AOP ポイントカット指定子の書き方について</a></li>
+</ul>
+</li>
+<li>util<ul>
+<li><a href="https://qiita.com/KevinFQ/items/abc7369cb07eb4b9ae29">@Component、@Service、@Repository、@Controller</a></li>
+</ul>
+</li>
+<li>validation<ul>
+<li><a href="https://qiita.com/1noseA/items/6799c352827c04aec559">jakarta バリデーションで詰まったことまとめ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>restapi<ul>
+<li>controller</li>
+<li>service</li>
+<li>mapper</li>
+<li>dto</li>
+</ul>
+</li>
+<li>MyBatis Generator<ul>
+<li>dto</li>
+<li>entity</li>
+<li>mapper</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Exia Huang
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
